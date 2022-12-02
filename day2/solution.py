@@ -1,5 +1,3 @@
-# The winner of the whole tournament is the player with the highest score. Your total score is the sum of your #scores for each round. The score for a single round is the score for the shape you selected (1 for Rock, 2 for #Paper, and 3 for Scissors) plus the score for the outcome of the round (0 if you lost, 3 if the round was a #draw, and 6 if you won).
-
 from typing import List
 
 mapping = {
@@ -29,7 +27,8 @@ class Solution:
                 player = key
         return opponent, player
 
-    def comparison(self, opponent: str, player: str) -> int:
+    @staticmethod
+    def comparison(opponent: str, player: str) -> int:
         if opponent == player:
             return DRAW
         elif opponent == "rock" and player == "paper":
@@ -41,7 +40,8 @@ class Solution:
         else:
             return LOST
 
-    def match_for_tactic(self, opponent: str, status: str) -> int:
+    @staticmethod
+    def match_for_tactic(opponent: str, status: str) -> int:
         if status == "win":
             if opponent == "rock":
                 return WIN + mapping["paper"]["value"]
@@ -75,6 +75,7 @@ class Solution:
 
     @staticmethod
     def task1():
+        solution = Solution()
         input = solution.get_input("input.txt")
         score = 0
         for match in input:
@@ -85,6 +86,7 @@ class Solution:
 
     @staticmethod
     def task2():
+        solution = Solution()
         input = solution.get_input("input.txt")
         score = 0
         for match in input:
@@ -94,6 +96,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    solution = Solution()
-    solution.task1()
-    solution.task2()
+    Solution.task1()
+    Solution.task2()
